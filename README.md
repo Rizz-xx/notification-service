@@ -7,51 +7,54 @@ Layanan Notifikasi berbasis microservices yang dirancang menggunakan PHP Native 
 ## 🛠️ Tools & Persyaratan Sistem
 
 Sebelum menjalankan proyek ini, pastikan Anda telah menginstal tools berikut:
-* **XAMPP** (Apache Web Server & MySQL Database)
-* **PHP** version 7.4 / 8.x
-* **Postman** (Opsional, untuk pengujian API)
-* Web Browser (Chrome / Firefox / Edge)
+
+- **XAMPP** (Apache Web Server & MySQL Database)
+- **PHP** version 7.4 / 8.x
+- **Postman** (Opsional, untuk pengujian API)
+- Web Browser (Chrome / Firefox / Edge)
 
 ---
 
 ## 🚀 Cara Penginstalan & Jalur Proyek
 
 1. **Jalankan XAMPP Control Panel**
-   * Aktifkan modul **Apache** dan **MySQL**.
+   - Aktifkan modul **Apache** dan **MySQL**.
 
 2. **Kloning / Salin Kode Proyek**
-   * Pastikan folder proyek diletakkan di dalam direktori `htdocs`:
+   - Pastikan folder proyek diletakkan di dalam direktori `htdocs`:
      `C:\xampp\htdocs\notification-service\`
 
 3. **Pengaturan Database**
-   * Buka browser dan akses **phpMyAdmin** di `http://localhost/phpmyadmin/`.
-   * Buat database baru bernama: `db_notifikasi`.
-   * Buat tabel bernama `notification` dengan struktur berikut:
-     * `id` (INT, Primary Key, AUTO_INCREMENT)
-     * `recipient` (VARCHAR 100)
-     * `message` (TEXT)
-     * `created_at` (TIMESTAMP, default: `CURRENT_TIMESTAMP`)
+   - Buka browser dan akses **phpMyAdmin** di `http://localhost/phpmyadmin/`.
+   - Buat database baru bernama: `db_notifikasi`.
+   - Buat tabel bernama `notification` dengan struktur berikut:
+     - `id` (INT, Primary Key, AUTO_INCREMENT)
+     - `recipient` (VARCHAR 100)
+     - `message` (TEXT)
+     - `created_at` (TIMESTAMP, default: `CURRENT_TIMESTAMP`)
 
 ---
 
 ## 📑 Kontrak API (Untuk Kelompok 5 & Client)
 
-**Base URL:** `http://localhost/notification-service/api.php`
+**Base URL:** `http://localhost/notification/api.php`
 
 ### 1. Mengirim Notifikasi Baru (Kelompok 5 -> Kelompok 6)
+
 Digunakan oleh Kelompok 5 untuk memicu/mengirimkan pesan notifikasi baru saat ada aktivitas submission file.
 
-* **Method:** `POST`
-* **URL:** `http://localhost/notification-service/api.php`
-* **Headers:** `Content-Type: application/x-www-form-urlencoded`
-* **Body Parameters:**
+- **Method:** `POST`
+- **URL:** `http://localhost/notification-service/api.php`
+- **Headers:** `Content-Type: application/x-www-form-urlencoded`
+- **Body Parameters:**
 
-| Parameter | Tipe Data | Keterangan | Contoh |
-| :--- | :--- | :--- | :--- |
-| `recipient` | String | Nama atau identitas penerima notifikasi | `Budi` |
-| `message` | String | Isi pesan notifikasi yang ingin disampaikan | `File tugas matematika berhasil diunggah.` |
+| Parameter   | Tipe Data | Keterangan                                  | Contoh                                     |
+| :---------- | :-------- | :------------------------------------------ | :----------------------------------------- |
+| `recipient` | String    | Nama atau identitas penerima notifikasi     | `Budi`                                     |
+| `message`   | String    | Isi pesan notifikasi yang ingin disampaikan | `File tugas matematika berhasil diunggah.` |
 
-* **Response (Success - 200 OK):**
+- **Response (Success - 200 OK):**
+
 ```json
 {
   "status": "success",
@@ -59,7 +62,8 @@ Digunakan oleh Kelompok 5 untuk memicu/mengirimkan pesan notifikasi baru saat ad
 }
 ```
 
-* **Response (Error - Bad Request):**
+- **Response (Error - Bad Request):**
+
 ```json
 {
   "status": "error",
@@ -70,11 +74,13 @@ Digunakan oleh Kelompok 5 untuk memicu/mengirimkan pesan notifikasi baru saat ad
 ---
 
 ### 2. mengambil Daftar Notifikasi
+
 Digunakan untuk mengambil seluruh riwayat notifikasi yang tersimpan di dalam database.
 
-* **Method:** `GET`
-* **URL:** `http://localhost/notification-service/api.php`
-* **Response (Success - 200 OK):**
+- **Method:** `GET`
+- **URL:** `http://localhost/notification-service/api.php`
+- **Response (Success - 200 OK):**
+
 ```json
 {
   "status": "success",
@@ -92,18 +98,20 @@ Digunakan untuk mengambil seluruh riwayat notifikasi yang tersimpan di dalam dat
 ---
 
 ### 3. Menghapus Notifikasi
+
 Digunakan untuk menghapus notifikasi berdasarkan ID tertentu.
 
-* **Method:** `DELETE`
-* **URL:** `http://localhost/notification-service/api.php`
-* **Headers:** `Content-Type: application/x-www-form-urlencoded`
-* **Body Parameters:**
+- **Method:** `DELETE`
+- **URL:** `http://localhost/notification-service/api.php`
+- **Headers:** `Content-Type: application/x-www-form-urlencoded`
+- **Body Parameters:**
 
-| Parameter | Tipe Data | Keterangan | Contoh |
-| :--- | :--- | :--- | :--- |
-| `id` | Integer | ID unik notifikasi yang ingin dihapus | `1` |
+| Parameter | Tipe Data | Keterangan                            | Contoh |
+| :-------- | :-------- | :------------------------------------ | :----- |
+| `id`      | Integer   | ID unik notifikasi yang ingin dihapus | `1`    |
 
-* **Response (Success - 200 OK):**
+- **Response (Success - 200 OK):**
+
 ```json
 {
   "status": "success",
