@@ -2,6 +2,16 @@
 header("Content-Type: application/json; charset=UTF-8");
 include "koneksi.php";
 
+if (isset($_GET['health']) || (isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] == '/health')) {
+    echo json_encode([
+        "status" => "healthy",
+        "service" => "Notification Service (Kelompok 6)",
+        "database" => $conn ? "connected" : "disconnected",
+        "timestamp" => date("Y-m-d H:i:s")
+    ]);
+    exit();
+}
+
 $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
