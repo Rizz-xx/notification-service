@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "db_notifikasi";
+$db   = "db_notifications";
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 

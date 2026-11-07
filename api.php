@@ -17,7 +17,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     // 1. GET: Mengambil semua data notifikasi
     case 'GET':
-        $result = mysqli_query($conn, "SELECT * FROM notification ORDER BY id DESC");
+        $result = mysqli_query($conn, "SELECT * FROM notifications ORDER BY id DESC");
         $data = [];
         while ($row = mysqli_fetch_assoc($result)) {
             $data[] = $row;
