@@ -34,7 +34,7 @@ switch ($method) {
         $message = $_POST['message'] ?? '';
 
         if (!empty($recipient) && !empty($message)) {
-            $query = "INSERT INTO notification (recipient, message) VALUES ('$recipient', '$message')";
+            $query = "INSERT INTO notifications (recipient, message) VALUES ('$recipient', '$message')";
             if (mysqli_query($conn, $query)) {
                 echo json_encode([
                     "status" => "success",
@@ -60,7 +60,7 @@ switch ($method) {
         $id = $_DELETE['id'] ?? '';
 
         if (!empty($id)) {
-            $query = "DELETE FROM notification WHERE id = '$id'";
+            $query = "DELETE FROM notifications WHERE id = '$id'";
             if (mysqli_query($conn, $query)) {
                 echo json_encode([
                     "status" => "success",
